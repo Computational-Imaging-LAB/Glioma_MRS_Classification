@@ -1,0 +1,339 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+# data_30_total_metabs_TERT_SFFS
+data:
+  type: pandas.ExcelDataSet
+  filepath: data/01_raw/Glioma_IDH_30CRLB_total_metabs.xlsx
+  load_args:
+    na_values: N\A
+  save_args:
+    index: false
+
+data_dl:
+  type: pandas.ExcelDataSet
+  filepath: data/01_raw/1Dspectra_glioma_IDH.xlsx 
+  load_args:
+    na_values: N\A
+  save_args:
+    index: false
+
+data_clean:
+  type: pandas.ExcelDataSet
+  filepath: data/02_intermediate/Glioma_TERT_30CRLB_total_metabs_clean.xlsx 
+  load_args:
+    na_values: N\A
+  save_args:
+    index: false
+
+data_filled_NaNs:
+  type: pandas.ExcelDataSet
+  filepath: data/02_intermediate/Glioma_TERT_30CRLB_total_metabs_filled.xlsx 
+  load_args:
+    na_values: N\A
+  save_args:
+    index: false
+
+train_dataset:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/train.parquet
+  save_args:
+    index: false
+
+test_dataset:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/test.parquet
+  save_args:
+      index: false 
+
+train_dataset_dl:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/train_dl.parquet
+  save_args:
+    index: false
+
+test_dataset_dl:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/test_dl.parquet
+  save_args:
+      index: false 
+
+valid_dataset_dl:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/valid_dl.parquet
+  save_args:
+      index: false 
+
+train_dataset_filled:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/train_filled.parquet
+  save_args:
+      index: false
+
+test_dataset_filled:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/test_filled.parquet
+  save_args:
+    index: false 
+
+X_test_processed:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/X_test_processed.csv
+
+X_valid_processed:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/X_valid_processed.csv
+    
+X_train_processed:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/X_train_processed.csv
+
+scaler:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/scaler.pkl
+
+transformer:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/transformer.pkl
+
+valid_dataset:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/valid.parquet
+
+X_train:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train.parquet
+
+X_train_filled:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train_filled.parquet
+
+X_train_dl:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train_dl.parquet
+
+y_train:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/y_train.xlsx
+
+y_train_dl:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/y_train_dl.xlsx
+
+Age_train:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/Age_train.xlsx
+
+X_test:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test.parquet
+
+X_test_filled:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test_filled.parquet
+
+X_test_dl:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test_dl.parquet
+
+X_valid_dl:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_valid_dl.parquet
+
+y_test:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/y_test.xlsx
+
+y_test_dl:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/y_test_dl.xlsx
+
+Age_test:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/Age_test.xlsx
+
+y_valid_dl:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/y_valid_dl.xlsx
+
+Age_valid:
+  type: pandas.ExcelDataSet
+  filepath: data/05_model_input/Age_valid.xlsx
+
+X_train_selected:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train_selected.parquet
+
+
+X_test_selected:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test_selected.parquet
+
+X_train_filled_selected:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train_selected_filled.parquet
+
+X_test_filled_selected:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test_selected_filled.parquet
+
+best_xgb_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_xgb_model.pkl
+
+xgb_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/xgb_selected_feature_indices.pkl
+
+best_svm_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_svm_model.pkl
+
+svm_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/svm_selected_feature_indices.pkl
+
+best_knn_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_knn_model.pkl
+
+best_rf_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_rf_model.pkl
+
+best_dt_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_dt_model.pkl
+
+dt_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/dt_selected_feature_indices.pkl
+
+best_lr_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_lr_model.pkl
+
+lr_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/lr_selected_feature_indices.pkl
+
+best_ada_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_ada_model.pkl
+
+ada_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/ada_selected_feature_indices.pkl
+
+best_lgb_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_lgb_model.pkl
+
+lgb_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/lgb_selected_feature_indices.pkl
+
+best_lda_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_lda_model.pkl
+
+lda_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/lda_selected_feature_indices.pkl
+
+best_gnb_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/best_gnb_model.pkl
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/cnn_model.pkl
+
+best_checkpoint:
+  type: glioma.extras.datasets.torch_model.TorchLocalModel
+  filepath: data/06_models/cnn_model.pth
+
+gnb_selected_feature_indices:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/gnb_selected_feature_indices.pkl
+
+xgb_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/xgb_classification_report.json
+
+classification_report_xgb_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/xgb_classification_report_training.json
+
+svm_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/svm_classification_report.json
+
+classification_report_svm_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/svm_classification_report_training.json
+
+knn_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/knn_classification_report.json
+
+classification_report_knn_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/knn_classification_report_training.json
+
+rf_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/rf_classification_report.json
+
+classification_report_rf_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/rf_classification_report_training.json
+
+dt_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/dt_classification_report.json
+
+classification_report_dt_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/dt_classification_report_training.json
+
+lr_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/lr_classification_report.json
+
+classification_report_lr_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/lr_classification_report_training.json
+
+ada_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/ada_classification_report.json
+
+classification_report_ada_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/ada_classification_report_training.json
+
+lgb_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/lgb_classification_report.json
+
+classification_report_lgb_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/lgb_classification_report_training.json
+
+lda_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/lda_classification_report.json
+
+classification_report_lda_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/lda_classification_report_training.json
+
+gnb_classification_report:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/gnb_classification_report.json
+
+classification_report_gnb_training:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/gnb_classification_report_training.json
